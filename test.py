@@ -16,7 +16,7 @@ def write_to_minio(file_bytes, file_buffer, file_name):
 	client = Minio(
 		endpoint = "minio1:9000",
 		access_key="minioadmin",	#os.environ.get('MINIO_ROOT_USER'),
-		secret_key="minioadmin"		#os.environ.get('MINIO_ROOT_PASSWORD'),
+		secret_key="minioadmin",		#os.environ.get('MINIO_ROOT_PASSWORD'),
 		# region='kz',
 		secure=False,
 	)
