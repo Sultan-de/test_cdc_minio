@@ -23,6 +23,7 @@ In order to follow along you will need the tools specified below
 * Go inside of directory,  `cd test_cdc_minio`
 * Run this command `docker-compose pull; docker-compose up`
 * This docker-compose contains all the images which we will need in our project.
+* Wait until it builds fully.
 * After this, let’s create the data in postgres. We use pgcli to interact with our postgres instance
 * Open new Terminal in current directory and Run this command `pgcli -h localhost -p 5432 -U start_data_engineer` #password is password
 * After connect to DB, run this command: 
