@@ -5,10 +5,7 @@ import io
 from minio import Minio
 from minio.error import S3Error
 from dotenv import load_dotenv
-import os
 
-
-#load_dotenv()
 
 def write_to_minio(file_bytes, file_buffer, file_name):
 # Create a client with the MinIO server playground, its access key
@@ -39,7 +36,7 @@ def write_to_minio(file_bytes, file_buffer, file_name):
 
 COUNT_OF_MSGS = 1
 consumer = KafkaConsumer(
-	'bankserver1.bank.holding',
+	'bankserver1.public.holding',
 	bootstrap_servers=['kafka:9092'],
 	auto_offset_reset='earliest',
 	enable_auto_commit=True,
