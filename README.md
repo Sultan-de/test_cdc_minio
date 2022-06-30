@@ -26,7 +26,6 @@ In order to follow along you will need the tools specified below
 * After service is built we can check for presence of connector: `curl -H "Accept:application/json" localhost:8083/connectors/`
 * We can see the sde-connector is registered.
 * Now we can start our python script insert.py to populate amount of data. Script inserts every 3 seconds to table a new data.
-* If you don't have poetry, 
 * Run this command in Terminal: 
 ```
 poetry run python3 insert.py

@@ -34,6 +34,6 @@ while True:
     session.add(new_object)
     session.commit()
     print(f'Object - {holding_id} inserted')
-    time.sleep(10)
+    time.sleep(3)
 
 session.close()
