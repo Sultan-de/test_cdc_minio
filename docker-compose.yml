@@ -90,20 +90,20 @@ services:
       - zookeeper
   
   connect:
-    image: debezium/connect:1.1
-    build:
-      args:
-        DEBEZIUM_VERSION: 1.1
-    ports:
-      - 8083:8083
-      - 5005:5005
-    environment:
-      - BOOTSTRAP_SERVERS=kafka:9092
-      - GROUP_ID=sde_group
-      - CONFIG_STORAGE_TOPIC=sde_storage_topic
-      - OFFSET_STORAGE_TOPIC=sde_offset_topic
-    depends_on:
-      - kafka
+      image: debezium/connect:1.1
+      build:
+        args:
+          DEBEZIUM_VERSION: 1.1
+      ports:
+        - 8083:8083
+        - 5005:5005
+      environment:
+        - BOOTSTRAP_SERVERS=kafka:9092
+        - GROUP_ID=sde_group
+        - CONFIG_STORAGE_TOPIC=sde_storage_topic
+        - OFFSET_STORAGE_TOPIC=sde_offset_topic
+      depends_on:
+        - kafka
 
   app:
     build: .
