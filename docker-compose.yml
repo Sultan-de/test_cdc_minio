@@ -10,8 +10,6 @@ x-minio-common: &minio-common
   environment:
     MINIO_ROOT_USER: minioadmin
     MINIO_ROOT_PASSWORD: minioadmin
-  #env_file:
-  #      - .env
   healthcheck:
     test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
     interval: 30s
@@ -68,8 +66,6 @@ services:
     image: debezium/postgres:12
     ports:
       - "5432:5432"
-    #env_file:
-    #    - .env
     environment:
       - POSTGRES_USER=start_data_engineer
       - POSTGRES_PASSWORD=password
@@ -88,8 +84,6 @@ services:
     image: debezium/kafka:1.1
     ports:
       - 9092:9092
-    #links:
-    # - zookeeper
     environment:
       - ZOOKEEPER_CONNECT=zookeeper:2181
     depends_on:
@@ -103,9 +97,6 @@ services:
     ports:
       - 8083:8083
       - 5005:5005
-    #links:
-    # - kafka
-    # - postgres
     environment:
       - BOOTSTRAP_SERVERS=kafka:9092
       - GROUP_ID=sde_group
@@ -113,18 +104,8 @@ services:
       - OFFSET_STORAGE_TOPIC=sde_offset_topic
     depends_on:
       - kafka
-    # healthcheck:
-    ##   test: ["CMD", "./curl.sh"]
-    #  interval: 2s
-    #  timeout: 30s
-    #  retries: 15
-
   app:
     build: .
-    #restart: on-failure
-    #    depends_on:
-    #        connect:
-    #          condition: service_completed_successfully
     environment:
       WAIT_HOSTS: postgres:5432, kafka:9092, zookeeper:2181, connect:8083
       WAIT_AFTER: 15
